@@ -1,0 +1,239 @@
+:root {
+  --bg: #f6f1e8;
+  --ink: #1d2a24;
+  --muted: #6c746c;
+  --panel: rgba(255, 252, 247, 0.88);
+  --line: rgba(29, 42, 36, 0.1);
+  --accent: #d96f32;
+  --accent-2: #1f6c5c;
+  --shadow: 0 18px 60px rgba(48, 43, 33, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Georgia, "Times New Roman", serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at top left, rgba(217, 111, 50, 0.16), transparent 30%),
+    radial-gradient(circle at top right, rgba(31, 108, 92, 0.16), transparent 24%),
+    linear-gradient(180deg, #fbf7ef 0%, var(--bg) 100%);
+}
+
+.shell {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 32px 0 56px;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.4fr 0.8fr;
+  gap: 24px;
+  align-items: stretch;
+}
+
+.hero-copy,
+.hero-card,
+.results-shell {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(12px);
+}
+
+.hero-copy {
+  padding: 32px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--accent-2);
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+button {
+  font-family: "Trebuchet MS", Verdana, sans-serif;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2.4rem, 6vw, 4.8rem);
+  line-height: 0.95;
+}
+
+.lede {
+  max-width: 62ch;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+.search-panel {
+  display: grid;
+  grid-template-columns: 1.7fr 1fr auto;
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.search-panel label {
+  display: grid;
+  gap: 8px;
+  font-size: 0.95rem;
+}
+
+.search-panel input,
+.search-panel select,
+.search-panel button {
+  min-height: 52px;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  padding: 0 16px;
+  font-size: 1rem;
+}
+
+.search-panel input,
+.search-panel select {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.search-panel button {
+  align-self: end;
+  border: none;
+  background: linear-gradient(135deg, var(--accent), #ea9e45);
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.subtle,
+.results-head p,
+.product-recommendation,
+.asin {
+  color: var(--muted);
+}
+
+.hero-card {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-card ul {
+  margin: 12px 0 0;
+  padding-left: 18px;
+  line-height: 1.9;
+}
+
+.metric-label {
+  margin: 0;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+}
+
+.results-shell {
+  margin-top: 24px;
+  padding: 28px;
+}
+
+.results-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: end;
+}
+
+.results-grid {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+.product-card {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: white;
+}
+
+.product-image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  background: #f3eee6;
+}
+
+.product-body {
+  padding: 18px;
+}
+
+.score-pill {
+  display: inline-block;
+  margin-bottom: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(31, 108, 92, 0.12);
+  color: var(--accent-2);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.product-title {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.35;
+}
+
+.product-stats {
+  margin: 14px 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.product-stats div {
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: #faf6f0;
+}
+
+.product-stats dt {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.product-stats dd {
+  margin: 4px 0 0;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+@media (max-width: 860px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .search-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .results-head {
+    display: block;
+  }
+}

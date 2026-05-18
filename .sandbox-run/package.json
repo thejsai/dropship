@@ -1,0 +1,10 @@
+{
+  "name": "dropship-scout-lite",
+  "version": "0.1.0",
+  "description": "Small Amazon product scout MVP for dropshipping-style research",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  }
+}

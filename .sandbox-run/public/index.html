@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dropship Scout Lite</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Small Helium 10-style MVP</p>
+          <h1>Dropship Scout Lite</h1>
+          <p class="lede">
+            Search Amazon-style listings, rank products for beginner dropshipping research,
+            and swap between fixture mode and live scraping when you are ready.
+          </p>
+          <form id="search-form" class="search-panel">
+            <label>
+              <span>Keyword</span>
+              <input id="query" name="query" type="text" value="portable blender" required />
+            </label>
+            <label>
+              <span>Mode</span>
+              <select id="source" name="source">
+                <option value="fixture">Fixture Test Data</option>
+                <option value="live">Live Scraper</option>
+                <option value="official">Official API Status</option>
+              </select>
+            </label>
+            <button type="submit">Scout Products</button>
+          </form>
+          <p class="subtle" id="status-line">
+            Running in repeatable fixture mode by default so we can test locally.
+          </p>
+        </div>
+        <aside class="hero-card">
+          <p class="metric-label">What this MVP checks</p>
+          <ul>
+            <li>Visible price</li>
+            <li>Ratings and review counts</li>
+            <li>Prime presence</li>
+            <li>Simple opportunity score</li>
+          </ul>
+        </aside>
+      </section>
+
+      <section class="results-shell">
+        <div class="results-head">
+          <h2>Ranked Products</h2>
+          <p id="results-meta">No search run yet.</p>
+        </div>
+        <div id="results" class="results-grid"></div>
+      </section>
+    </main>
+
+    <template id="product-card-template">
+      <article class="product-card">
+        <img class="product-image" alt="" />
+        <div class="product-body">
+          <div class="score-pill"></div>
+          <h3 class="product-title"></h3>
+          <p class="product-recommendation"></p>
+          <dl class="product-stats">
+            <div><dt>Price</dt><dd class="price"></dd></div>
+            <div><dt>Rating</dt><dd class="rating"></dd></div>
+            <div><dt>Reviews</dt><dd class="reviews"></dd></div>
+            <div><dt>Prime</dt><dd class="prime"></dd></div>
+          </dl>
+          <p class="asin"></p>
+        </div>
+      </article>
+    </template>
+
+    <script src="/app.js"></script>
+  </body>
+  </html>
