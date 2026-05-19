@@ -56,6 +56,30 @@ function parseTitle(block) {
   );
 }
 
+function extractKeywords(title, query = "") {
+  // Common stop words to filter out
+  const stopWords = new Set([
+    "the", "a", "an", "and", "or", "but", "in", "on", "at", "to", "for", "of", "with", "by",
+    "from", "as", "is", "was", "are", "be", "been", "have", "has", "had", "do", "does", "did",
+    "will", "would", "could", "should", "may", "might", "can", "must", "it", "this", "that",
+    "these", "those", "i", "you", "he", "she", "we", "they", "what", "which", "who", "where",
+    "when", "why", "how", "all", "each", "every", "both", "few", "more", "most", "other",
+    "some", "such", "no", "nor", "not", "only", "own", "same", "so", "than", "too", "very"
+  ]);
+
+  // Split title into words, convert to lowercase, remove punctuation
+  const words = title
+    .toLowerCase()
+    .split(/\s+/)
+    .map(w => w.replace(/[^\w]/g, ""))
+    .filter(w => w.length > 2 && !stopWords.has(w));
+
+  // Get unique keywords and limit to top 5
+  const keywords = [...new Set(words)].slice(0, 5);
+
+  return keywords;
+}
+
 function parseAmazonSearchHtml(html, query = "") {
   const blocks = html.match(/<div[^>]+data-component-type="s-search-result"[\s\S]*?<\/div>\s*<\/div>/gi) || [];
 
@@ -77,7 +101,8 @@ function parseAmazonSearchHtml(html, query = "") {
         reviewCount: parseReviewCount(block),
         prime: parsePrime(block),
         image: parseImage(block),
-        searchQuery: query
+        searchQuery: query,
+        keywords: extractKeywords(title, query)
       };
     })
     .filter(Boolean);

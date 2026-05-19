@@ -35,6 +35,15 @@ function renderProducts(payload) {
     fragment.querySelector(".rating").textContent = product.rating ? `${product.rating}/5` : "N/A";
     fragment.querySelector(".reviews").textContent = formatNumber(product.reviewCount);
     fragment.querySelector(".prime").textContent = product.prime ? "Yes" : "No";
+    
+    // Display keywords
+    if (product.keywords && product.keywords.length) {
+      const keywordsTags = fragment.querySelector(".keywords-tags");
+      keywordsTags.innerHTML = product.keywords
+        .map(kw => `<span class="keyword-tag">${kw}</span>`)
+        .join("");
+    }
+    
     fragment.querySelector(".asin").textContent = `ASIN: ${product.asin}`;
     results.appendChild(fragment);
   });
