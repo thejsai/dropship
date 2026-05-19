@@ -45,11 +45,12 @@ async function runSearch(event) {
 
   const query = document.getElementById("query").value.trim();
   const source = document.getElementById("source").value;
+  const marketplace = document.getElementById("marketplace").value;
 
   statusLine.textContent = "Running search...";
   resultsMeta.textContent = "Loading...";
 
-  const params = new URLSearchParams({ q: query, source });
+  const params = new URLSearchParams({ q: query, source, marketplace });
   const response = await fetch(`/api/search?${params.toString()}`);
   const payload = await response.json();
 
